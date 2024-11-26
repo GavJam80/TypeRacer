@@ -50,6 +50,23 @@ document.addEventListener('DOMContentLoaded', function() {
         return correctWords;
     }
 
+    function highlightText() {
+        const sampleWords = sampleTextDiv.textContent.split(' ');
+        const userWords = userInput.value.split(' ');
+
+        let highlightedText = sampleWords.map((word, index) => {
+            if (userWords[index] === undefined) {
+                return word;
+            } else if (userWords[index] === word) {
+                return `<span class="text-success">${word}</span>`;
+            } else {
+                return `<span class="text-danger">${word}</span>`;
+            }
+        }).join(' ');
+
+        sampleTextDiv.innerHTML = highlightedText;
+    }
+
     function startTest() {
         startTime = new Date();
         startButton.disabled = true;
@@ -95,6 +112,7 @@ document.addEventListener('DOMContentLoaded', function() {
     startButton.addEventListener('click', startTest);
     stopButton.addEventListener('click', stopTest);
     retryButton.addEventListener('click', retryTest);
+    userInput.addEventListener('input', highlightText);
 
     // Initialize with a random text from the default difficulty (easy)
     sampleTextDiv.textContent = getRandomText('easy');

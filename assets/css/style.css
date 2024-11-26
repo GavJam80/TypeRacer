@@ -33,10 +33,4 @@ header {
 #results-area {
     box-shadow: 0 0 10px #ff8400;
     border-radius: 10px;
-    padding: 20px;
-}
-
-#results-area p {
-    font-size: 1.1rem;
-    margin-bottom: 5px;
 }
